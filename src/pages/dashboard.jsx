@@ -1,7 +1,9 @@
+import Header from '../components/auth/Header/Header'
+
 function DashboardPage() {
   return (
     <div>
-        dashboard page zgardi
+        <Header/>
     </div>
   )
 }

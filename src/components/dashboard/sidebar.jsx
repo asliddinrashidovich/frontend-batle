@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal } from "antd"
 import { useState } from "react"
+import { useTranslation } from 'react-i18next'
 import { FaUser, FaUserGroup } from "react-icons/fa6"
 import { IoIosArrowDown, IoMdAdd } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
@@ -8,6 +9,7 @@ import { toast } from "react-toastify"
 import { useQuery } from "@tanstack/react-query"
 
 function Sidebar() {
+    const {t} = useTranslation()
     const [Dropdown, setDropDown] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const token = localStorage.getItem('token')
@@ -57,7 +59,7 @@ function Sidebar() {
     <>
         <div onClick={() => navigate('/dashboard')} className="flex items-center gap-[5px] px-[10px] py-[5px] rounded-[5px] translate-all duration-200 hover:bg-[#f0f0f0] cursor-pointer mb-[15px]">
             <FaUser className="text-[#0d6efd]" />
-            <p>Profile</p>
+            <p>{t("profile")}</p>
         </div>
         <div onClick={() => handleClickShow(true)} className="flex items-center gap-[5px] px-[10px] py-[5px] rounded-[5px] translate-all duration-200 hover:bg-[#f0f0f0] cursor-pointer mb-[15px]">
             <FaUserGroup className="text-[#0d6efd]" />
@@ -69,7 +71,7 @@ function Sidebar() {
         {Dropdown && <div>
             <div onClick={showModal} className="flex items-center gap-[5px] px-[10px] py-[5px] relative rounded-[5px] translate-all duration-200 hover:bg-[#f0f0f0] cursor-pointer mb-[10px]">
                 <IoMdAdd className="text-[#0d6efd]" />
-                <p>Create Group</p>
+                <p>{t("addGroup")}</p>
             </div>
             {groups?.map(item => (
                 <div onClick={() => handleGroupClick(item._id)} key={item._id} className="flex items-center gap-[5px] px-[10px] py-[5px] relative rounded-[5px] translate-all duration-200 hover:bg-[#f0f0f0] cursor-pointer pl-[20px]">

@@ -26,7 +26,7 @@ function Header() {
 	}
 
 	return (
-		<header className='w-full py-2 px-5 max-[620px]:py-[10px] shadow-md'>
+		<header className='w-full py-2 px-5 max-[620px]:py-[10px] shadow-md fixed top-0 left-0 z-50 bg-white'>
 			<nav
 				className='
           flex items-center justify-between gap-[50px]

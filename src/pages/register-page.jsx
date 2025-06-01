@@ -1,7 +1,11 @@
+import Register from "../components/authComponents/register/Register";
+
 function RegisterPage() {
   return (
-    <div>RegisterPage</div>
-  )
+    <div>
+      <Register />
+    </div>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;

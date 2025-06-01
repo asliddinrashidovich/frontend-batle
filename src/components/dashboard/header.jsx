@@ -6,12 +6,8 @@ import { FiRefreshCw } from 'react-icons/fi'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { FaPlus } from 'react-icons/fa6'
 import { LuSearch } from 'react-icons/lu'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
 
 function Header() {
-    const url = import.meta.env.VITE_API_URL
-    const [search, setSearch] = useState('')
     const menu = {
         items: [
             {
@@ -29,21 +25,9 @@ function Header() {
         ],
     }
 
-    useEffect(() => {
-        if (!search) return 
-    
-        const fetchData = async () => {
-            try {
-                const res = await axios.get(`${url}/search?q=${search}`)
-                console.log(res.data)
-            } catch (err) {
-                console.error('API error:', err)
-            }
-        }
-    
-        fetchData()
-    }, [search, url])
-
+    const handleReload = () => {
+        window.location.reload()
+    }
     return (
         <header className='w-full py-2 px-5 max-[620px]:py-[10px] shadow-md fixed top-0 left-0 z-50 bg-white'>
             <nav
@@ -86,8 +70,6 @@ function Header() {
                 >
                     <LuSearch />
                     <input
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
                         type='text'
                         placeholder='Search group and join...'
                         className='
@@ -107,7 +89,7 @@ function Header() {
           max-[500px]:gap-4
         '
                 >
-                    <FiRefreshCw className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
+                    <FiRefreshCw onClick={() => handleReload()} className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
                     <div className='relative'>
                         <IoNotificationsOutline className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
                         <div className='absolute top-[-10px] right-[-13px] px-[7px] rounded-[20px] bg-[#dc3545] max-[500px]:px-[5px]'>

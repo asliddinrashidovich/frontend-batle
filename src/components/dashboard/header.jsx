@@ -1,13 +1,18 @@
 import { Dropdown } from 'antd'
 import { IoSettingsSharp, IoNotificationsOutline } from 'react-icons/io5'
 import { FaBlog } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FiRefreshCw } from 'react-icons/fi'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { FaPlus } from 'react-icons/fa6'
 import { LuSearch } from 'react-icons/lu'
+import LanguageModal from './language'
+import { useTranslation } from 'react-i18next'
 
 function Header() {
+    const { t } = useTranslation()
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate()
     const menu = {
         items: [
             {
@@ -16,14 +21,22 @@ function Header() {
                     <div className='flex items-center gap-[5px] max-[500px]:gap-2'>
                         <AiOutlineLogout className='text-[#000] text-[20px] max-[500px]:text-[16px]' />
                         <p className='text-[14px] font-medium text-[#000] max-[500px]:text-[12px]'>
-                            Log out
+                            {t("log_out")}
                         </p>
                     </div>
                 ),
-                onClick: () => alert('Log out clicked'),
+                onClick: () => {
+                    const isLogOut = window.confirm('Rostdan ham akauntdan chiqmoqchimisiz?')
+                    if (isLogOut) {
+                        localStorage.removeItem('token')
+                        window.location.href = '/'
+                    }
+                },
             },
         ],
     }
+
+
 
     return (
         <header className='w-full py-2 px-5 max-[620px]:py-[10px] shadow-md fixed top-0 left-0 z-50 bg-white'>
@@ -35,7 +48,7 @@ function Header() {
         '
             >
                 <div className='flex items-center gap-[30px] max-[620px]:order-1 max-[500px]:gap-3'>
-                    <Link to='/'>
+                    <Link to={token ? '/dashboard' : '/'}>
                         <FaBlog className='text-[32px] text-[rgb(13,109,252)] max-[500px]:text-[24px]' />
                     </Link>
                     <div
@@ -47,7 +60,7 @@ function Header() {
                     >
                         <FaPlus className='text-[15px] text-[#fff] max-[500px]:text-[12px]' />
                         <p className='text-[#fff] font-medium ml-1 max-[500px]:text-[12px]'>
-                            New
+                            {t("new")}
                         </p>
                     </div>
                 </div>
@@ -68,7 +81,7 @@ function Header() {
                     <LuSearch />
                     <input
                         type='text'
-                        placeholder='Search group and join...'
+                        placeholder={t("input")}
                         className='
       w-full h-full
       outline-none
@@ -77,6 +90,8 @@ function Header() {
     '
                     />
                 </div>
+
+            <LanguageModal/>
 
                 <div
                     className='
@@ -87,7 +102,9 @@ function Header() {
         '
                 >
                     <FiRefreshCw className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
-                    <div className='relative'>
+                    <div onClick={() => {
+                        token ? navigate('/dashboard') : navigate('/')
+                    }} className='relative'>
                         <IoNotificationsOutline className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
                         <div className='absolute top-[-10px] right-[-13px] px-[7px] rounded-[20px] bg-[#dc3545] max-[500px]:px-[5px]'>
                             <p className='text-[12px] font-medium text-white max-[500px]:text-[10px]'>

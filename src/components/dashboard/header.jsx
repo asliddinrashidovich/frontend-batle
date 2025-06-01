@@ -25,6 +25,9 @@ function Header() {
         ],
     }
 
+    const handleReload = () => {
+        window.location.reload()
+    }
     return (
         <header className='w-full py-2 px-5 max-[620px]:py-[10px] shadow-md fixed top-0 left-0 z-50 bg-white'>
             <nav
@@ -86,7 +89,7 @@ function Header() {
           max-[500px]:gap-4
         '
                 >
-                    <FiRefreshCw className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
+                    <FiRefreshCw onClick={() => handleReload()} className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
                     <div className='relative'>
                         <IoNotificationsOutline className='text-[#000] text-[24px] cursor-pointer max-[500px]:text-[18px]' />
                         <div className='absolute top-[-10px] right-[-13px] px-[7px] rounded-[20px] bg-[#dc3545] max-[500px]:px-[5px]'>

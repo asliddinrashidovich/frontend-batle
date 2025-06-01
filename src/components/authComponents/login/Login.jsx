@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { FaBlog } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
@@ -53,7 +52,7 @@ function Login() {
         >
           Sign In
         </button>
-        <p className="text-[#212529] text-[17px]">Don't have an account?</p>
+        <p className="text-[#212529] text-[17px]">{`Don't have an account?`}</p>
         <Link className="text-[#0D6EFD] font-[500] underline" to="register">
           Register
         </Link>

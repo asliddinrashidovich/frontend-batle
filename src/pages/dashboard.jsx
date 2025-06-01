@@ -1,8 +1,12 @@
+import Header from "../components/dashboard/header"
+import MainDashboard from "../components/dashboard/main-dashboard"
+
 function DashboardPage() {
   return (
-    <div>
-        dashboard page zgardi
-    </div>
+    <>
+      <Header/>
+      <MainDashboard/>
+    </>
   )
 }
 

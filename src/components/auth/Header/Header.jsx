@@ -54,37 +54,30 @@ function Header() {
 
 				<div
 					className='
-          w-full max-w-[600px] h-[50px] max-[768px]:h-[40px]
+    flex items-center gap-[5px]
+     w-full max-w-[700px] h-[50px] max-[768px]:h-[40px] px-[10px]
           max-[620px]:order-3 max-[620px]:col-span-2 min-w-0
           max-[500px]:h-[36px]
-        '
+    rounded-md border border-gray-300
+    focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-300
+    focus-within:shadow-sm
+    transition-all duration-200
+    max-[500px]:text-sm max-[500px]:px-3 max-[500px]:py-1.5
+  '
 				>
-					<div
+					<LuSearch />
+					<input
+						type='text'
+						placeholder='Search group and join...'
 						className='
-						  flex items-center gap-[5px]
-              w-full h-full px-4 py-2
-              rounded-md border border-gray-300
-              focus:border-blue-500 focus:ring-2 focus:ring-blue-300
-              focus:shadow-sm
-              transition-all duration-200
-              max-[500px]:text-sm max-[500px]:px-3 max-[500px]:py-1.5
-            '
-					>
-						<LuSearch />
-						<input
-							type='text'
-							placeholder='Search group and join...'
-							className='
-              w-full h-full
-							outline-none
-              bg-transparent
-              max-[500px]:text-sm max-[500px]:px-3 max-[500px]:py-1.5
-            '
-						/>
-					</div>
+      w-full h-full
+      outline-none
+      bg-transparent
+      max-[500px]:text-sm max-[500px]:px-3 max-[500px]:py-1.5
+    '
+					/>
 				</div>
 
-				{/* Right side: Icons */}
 				<div
 					className='
           flex items-center gap-[30px]

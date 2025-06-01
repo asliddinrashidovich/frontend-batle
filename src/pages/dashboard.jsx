@@ -1,10 +1,10 @@
-import Header from '../components/auth/Header/Header'
+import MainDashboard from "../components/dashboard/main-dashboard"
 
 function DashboardPage() {
   return (
-    <div>
-        <Header/>
-    </div>
+    <>
+        <MainDashboard/>
+    </>
   )
 }
 

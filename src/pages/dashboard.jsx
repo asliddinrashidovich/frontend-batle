@@ -1,6 +1,8 @@
 function DashboardPage() {
   return (
-    <div>DashboardPage</div>
+    <div>
+        dashboard page zgardi
+    </div>
   )
 }
 
